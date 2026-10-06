@@ -1,10 +1,13 @@
 ﻿# DADIS_Ovinger
-
+Oppgaver:
+i tfe4141_rsa_integration_kit_2026:
+  1. I Multiplier, implementer source/multiplier.vhd og testbench og test at den fungerer
+  2. I RSA_accelerator, implementer source/rsa_datapath.vhd og source/rsa_controller.vhd og test at RSA fungerer med testbenken
 
 VIVADO MED GITHUB GUIDE:
 
 Update:
-Bro jeg vet ikke lenger
+Bro jeg vet ikke lenger, tror det fungerer nærme gamle måten men med tfe4141-mappen
 
 Vi synkroniserer bare source-filene med github, resten av prosjektet skal være utenfor githubmappen.
 Source filene vil si .vhdl filer som systemet og testbenker.
