@@ -6,13 +6,14 @@ entity multiplier is
 		-- System interface
 		clk		: in std_logic;
 		reset_n : in std_logic;
+
+		-- Datapath / Control interface
+		a_enable : in std_logic;
+		b_enable : in std_logic;
 		
 		-- Input interface
 		a		: in std_logic_vector(255 downto 0);
-		a_enable : in std_logic;
-
 		b		: in std_logic_vector(255 downto 0);
-		b_enable : in std_logic;
 
 		-- Output interface
 		out_r	: out std_logic_vector(255 downto 0);
