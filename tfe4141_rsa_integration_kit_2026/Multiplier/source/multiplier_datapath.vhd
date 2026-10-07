@@ -24,32 +24,42 @@ end multiplier;
 
 architecture mulBehave of multiplier is
 	signal a_r : std_logic_vector(255 downto 0);
-	signal a_p : std_logic_vector(255 downto 0);
+	signal a_d : std_logic_vector(255 downto 0);
+	signal a_q : std_logic_vector(255 downto 0);
 
 	signal b_r : std_logic_vector(255 downto 0);
-	signal b_p : std_logic_vector(255 downto 0);
+	signal b_d : std_logic_vector(255 downto 0);
+	signal b_q : std_logic_vector(255 downto 0);
 
 begin
-	-- A & B registers
-    process(clk, a_enable, b_enable)
+	-- ### A & B ###
+	-- Muxes
+	process(a, a_q, a_enable, b, b_q, b_enable)
+	begin
+		a_d <= a when a_enable='1' else a_q;
+		b_d <= b when b_enable='1' else b_q;
+	end process;
+
+	-- Registers
+    process(clk, a_d, b_d)
     begin
         if(clk'event and clk='1') then
-			if a_enable = '1' then
-				a_r <= a;
-
-			elsif a_enable = '0' then
-				a_r <= a_p;
-			end  if;
-
-			if b_enable = '1' then
-				b_r <= b;
-			
-			elsif b_enable = '0' then
-				b_r <= b_p;
-			end if;
+			a_r <= a_d;
+			b_r <= b_d;
 		end if;
 	end process;
 
-	-- 
+	process(a_r, b_r)
+	begin
+		a_q <= a_r;
+		b_q <= b_r;
+	end process;
+
+	-- ### ###
+
+	-- ### Noe mer ###
+	process()
+	end process;
+	-- ### ###
 
 end mulBehave;
